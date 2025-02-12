@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\SampleService;
+use Illuminate\View\View;
 
 class SampleController extends Controller
 {
@@ -13,9 +14,9 @@ class SampleController extends Controller
         $this->sampleService = $sampleService;
     }
 
-    public function index()
+    public function index(int $id) : View
     {
-        $user = $this->sampleService->getAUser();
+        $user = $this->sampleService->getAUser($id);
         $date = $this->sampleService->getDate('2025-01-31');
 
         return view('sample', ['name' => $user->name, 'date' => $date]);

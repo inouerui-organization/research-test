@@ -8,8 +8,7 @@ use Exception;
 
 class SampleService {
 
-    public function getAUser() : User {
-        $id = $this->getMaxId();
+    public function getAUser(int $id) : User {
         $user = $this->getUserById($id);
 
         if ($user == null) {
@@ -23,11 +22,7 @@ class SampleService {
         return $formattedDate;
     }
 
-    private function getUserById(int $id) {
+    private function getUserById(int $id) : User {
         return User::find($id);
-    }
-
-    private function getMaxId() {
-        return User::max('id');
     }
 }
